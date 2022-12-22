@@ -12,7 +12,7 @@ import com.tngtech.archunit.core.importer.ClassFileImporter;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * Tests the class {@link Assignment}.
+ * Tests the class {@link Exam}.
  *
  * @author Ullrich Hafner
  */

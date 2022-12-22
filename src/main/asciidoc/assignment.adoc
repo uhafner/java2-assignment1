@@ -27,7 +27,7 @@ endif::[]
 [TIP]
 ====
 
-Die Abgabe dieses Übungsblattes ist möglich bis zum 20.1. 18:00. Laden Sie Ihre Lösung im https://classroom.github.com/a/h0PY-vDW[GitHub Classroom Assignment 5] Projekt auf den eigenen `main` Branch hoch.
+Die Abgabe dieses Übungsblattes ist möglich bis zum 20.1. 18:00. Laden Sie Ihre Lösung im https://classroom.github.com/a/OAFPfB1v[GitHub Classroom Assignment 5] Projekt auf den eigenen `main` Branch hoch.
 
 ====
 
@@ -35,7 +35,7 @@ Die Abgabe dieses Übungsblattes ist möglich bis zum 20.1. 18:00. Laden Sie Ihr
 
 In dieser Aufgabe soll die Bewertung unsere bisherigen echten Übungsblätter in einem Java Programm modelliert werden. Dazu braucht es eine Klasse `Assignment`, die einer einzelnen Übungsaufgabe eines Übungsblattes entspricht. Wie im "echten Leben" hat eine Übungsaufgabe eine feste Nummer (`number`) und eine feste Anzahl von mir geschriebener Tests (`tests`), die die Korrektheit der Lösung überprüft. Die hier vorliegende Aufgabe hat beispielsweise die Nummer 18, es gibt darin 5 von mir geschriebene Tests.
 
-Neben diesen beiden Eigenschaften `number` und `tests` soll eine Instanz dieser Klasse `Assignment` den Fortschritt der Bearbeitung überwachen. Zunächst liegt die Anzahl der erfolgreichen, d.h. grünen Tests (`green`), bei `0`. D.h. alle Tests schlagen fehl und damit ist die Anzahl der fehlgeschlagenen, d.h. roten Tests (`red`) gleich mit der Gesamtzahl aller vorhandenen Tests. Wird nun eine Aufgabe bearbeitet und einer der fehlgeschlagenen Tests behoben, dann wird dies durch den Aufruf der Methode `solve(test)` umgesetzt. Der Parameter `test` entspricht der Nummer des behobenen Testfalls. Nach Aufruf dieser Methode erhöht sich die Anzahl der behobenen Tests, die Anzahl der fehlschlagenden Tests erniedrigt sich (natürlich nur, wenn der Test nicht schon vor dem Aufruf behoben war). Neben den Eigenschaften `green` und `red` soll die Klasse zusätzlich noch die Funktionalität bieten, der erreichten Prozentsatz als Integerzahl im Bereich 0-100 zurückzuliefern. Zudem gibt es ein "Bestanden" Kennzeichen, das bei 50% aller behobenen Tests auf `true` gesetzt wird
+Neben diesen beiden Eigenschaften `number` und `tests` soll eine Instanz dieser Klasse `Assignment` den Fortschritt der Bearbeitung überwachen. Zunächst liegt die Anzahl der erfolgreichen, d.h. grünen Tests (`green`), bei `0`. D.h. alle Tests schlagen fehl und damit ist die Anzahl der fehlgeschlagenen, d.h. roten Tests (`red`) gleich mit der Gesamtzahl aller vorhandenen Tests. Wird nun eine Aufgabe bearbeitet und einer der fehlgeschlagenen Tests behoben, dann wird dies durch den Aufruf der Methode `solve(int test)` umgesetzt. Der Parameter `test` entspricht der Nummer des behobenen Testfalls. Nach Aufruf dieser Methode erhöht sich die Anzahl der behobenen Tests, die Anzahl der fehlschlagenden Tests erniedrigt sich (natürlich nur, wenn der Test nicht schon vor dem Aufruf behoben war). Neben den Eigenschaften `green` und `red` soll die Klasse zusätzlich noch die Funktionalität bieten, der erreichten Prozentsatz als Integerzahl im Bereich 0-100 zurückzuliefern. Zudem gibt es ein "Bestanden" Kennzeichen, das bei 50% aller behobenen Tests auf `true` gesetzt wird
 
 Im folgenden Code Schnipsel finden Sie ein Bedienungsbeispiel dieser Klasse:
 
@@ -76,12 +76,11 @@ var sufficient4 = assignment.isSufficient(); // true
 
 ----
 
-Schreiben Sie eine neue Klasse `Assignment` und legen Sie diese im Ordner
-`src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`AssignmentTest`) durchlaufen.
+Schreiben Sie zur Lösung der Aufgabe eine neue Klasse `Assignment` und legen Sie diese im Ordner `src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`AssignmentTest`) durchlaufen.
 
 == 19. Modellierung einer Prüfung
 
-Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assignment` aus Aufgabe 18) zusammen. Zu Beginn wird eine Prüfung leer angelegt und dann Schritt für Schritt weitere Übungsaufgaben hinzugefügt. Dazu soll eine Methode `addAssignment(Assignment assignment)` geschrieben werden, die einer `Exam` Instanz eine weitere Übungsaufgabe hinzufügt. Eine Prüfung lässt sich somit als ein Array von `Assignment` Instanzen betrachten, der Zugriff darauf erfolgt allerdings immer nur über die  `Exam` Instanz. Nutzer der Klasse `Exam` sehen neben `addAssignment(Assignment assignment)` nur die folgenden Methoden:
+Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assignment` aus Aufgabe 18) zusammen. Zu Beginn wird eine Prüfung leer angelegt und dann Schritt für Schritt weitere Übungsaufgaben hinzugefügt. Dazu soll eine Methode `addAssignment(Assignment assignment)` geschrieben werden, die einer `Exam` Instanz eine weitere Übungsaufgabe hinzufügt. Eine Prüfung lässt sich somit als ein Array von `Assignment` Instanzen betrachten, der Zugriff darauf erfolgt allerdings immer nur über die  `Exam` Instanz. D.h. das Array ist nach außen nicht sichtbar, es ist gekapselt. Nutzer der Klasse `Exam` sehen neben `addAssignment(Assignment assignment)` nur die folgenden Methoden:
 
 - `getSize()`: liefert die Anzahl der gespeicherten Übungsaufgaben zurück
 - `getAssignment(int index)`: liefert die Übungsaufgabe `index` zurück
