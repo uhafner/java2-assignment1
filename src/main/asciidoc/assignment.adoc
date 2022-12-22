@@ -1,0 +1,133 @@
+= Übungsblatt 5 - Softwareentwicklung I
+:icons: font
+Prof. Dr. Ullrich Hafner <ullrich.hafner@hm.edu>
+:toc-title: Inhaltsverzeichnis
+:chapter-label:
+:chapter-refsig: Kapitel
+:section-label: Abschnitt
+:section-refsig: Abschnitt
+
+:xrefstyle: short
+:!sectnums:
+:partnums:
+ifndef::includedir[:includedir: ./]
+ifndef::imagesdir[:imagesdir: ./]
+ifndef::plantUMLDir[:plantUMLDir: .plantuml/]
+:figure-caption: Abbildung
+:table-caption: Tabelle
+
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+[TIP]
+====
+
+Die Abgabe dieses Übungsblattes ist möglich bis zum 20.1. 18:00. Laden Sie Ihre Lösung im https://classroom.github.com/a/h0PY-vDW[GitHub Classroom Assignment 5] Projekt auf den eigenen `main` Branch hoch.
+
+====
+
+== 18. Modellierung einer Übungsaufgabe
+
+In dieser Aufgabe soll die Bewertung unsere bisherigen echten Übungsblätter in einem Java Programm modelliert werden. Dazu braucht es eine Klasse `Assignment`, die einer einzelnen Übungsaufgabe eines Übungsblattes entspricht. Wie im "echten Leben" hat eine Übungsaufgabe eine feste Nummer (`number`) und eine feste Anzahl von mir geschriebener Tests (`tests`), die die Korrektheit der Lösung überprüft. Die hier vorliegende Aufgabe hat beispielsweise die Nummer 18, es gibt darin 5 von mir geschriebene Tests.
+
+Neben diesen beiden Eigenschaften `number` und `tests` soll eine Instanz dieser Klasse `Assignment` den Fortschritt der Bearbeitung überwachen. Zunächst liegt die Anzahl der erfolgreichen, d.h. grünen Tests (`green`), bei `0`. D.h. alle Tests schlagen fehl und damit ist die Anzahl der fehlgeschlagenen, d.h. roten Tests (`red`) gleich mit der Gesamtzahl aller vorhandenen Tests. Wird nun eine Aufgabe bearbeitet und einer der fehlgeschlagenen Tests behoben, dann wird dies durch den Aufruf der Methode `solve(test)` umgesetzt. Der Parameter `test` entspricht der Nummer des behobenen Testfalls. Nach Aufruf dieser Methode erhöht sich die Anzahl der behobenen Tests, die Anzahl der fehlschlagenden Tests erniedrigt sich (natürlich nur, wenn der Test nicht schon vor dem Aufruf behoben war). Neben den Eigenschaften `green` und `red` soll die Klasse zusätzlich noch die Funktionalität bieten, der erreichten Prozentsatz als Integerzahl im Bereich 0-100 zurückzuliefern. Zudem gibt es ein "Bestanden" Kennzeichen, das bei 50% aller behobenen Tests auf `true` gesetzt wird
+
+Im folgenden Code Schnipsel finden Sie ein Bedienungsbeispiel dieser Klasse:
+
+[source,java]
+----
+var assignment = new Assignment(18, 5); // Aufgabe 18 mit 5 Testfällen
+var number = assignment.getNumber(); // 18
+var tests = assignment.getTests(); // 18
+var green1 = assignment.getGreen(); // 0
+var red1 = assignment.getRed(); // 5
+var percentage1 = assignment.getPercentage(); // 0
+
+assignment.solve(0); // behebt ersten Test
+
+var green2 = assignment.getGreen(); // 1
+var red2 = assignment.getRed(); // 4
+var percentage2 = assignment.getPercentage(); // 20
+
+assignment.solve(0); // behebt ersten Test nochmal - keine Änderung
+
+var green2 = assignment.getGreen(); // 1
+var red2 = assignment.getRed(); // 4
+var percentage2 = assignment.getPercentage(); // 20
+
+assignment.solve(1); // behebt zweiten Test
+
+var green3 = assignment.getGreen(); // 2
+var red3 = assignment.getRed(); // 3
+var percentage3 = assignment.getPercentage(); // 40
+var sufficient3 = assignment.isSufficient(); // false
+
+assignment.solve(2); // behebt dritten Test
+
+var green4 = assignment.getGreen(); // 3
+var red4 = assignment.getRed(); // 2
+var percentage4 = assignment.getPercentage(); // 60
+var sufficient4 = assignment.isSufficient(); // true
+
+----
+
+Schreiben Sie eine neue Klasse `Assignment` und legen Sie diese im Ordner
+`src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`AssignmentTest`) durchlaufen.
+
+== 19. Modellierung einer Prüfung
+
+Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assignment` aus Aufgabe 18) zusammen. Zu Beginn wird eine Prüfung leer angelegt und dann Schritt für Schritt weitere Übungsaufgaben hinzugefügt. Dazu soll eine Methode `addAssignment(Assignment assignment)` geschrieben werden, die einer `Exam` Instanz eine weitere Übungsaufgabe hinzufügt. Eine Prüfung lässt sich somit als ein Array von `Assignment` Instanzen betrachten, der Zugriff darauf erfolgt allerdings immer nur über die  `Exam` Instanz. Nutzer der Klasse `Exam` sehen neben `addAssignment(Assignment assignment)` nur die folgenden Methoden:
+
+- `getSize()`: liefert die Anzahl der gespeicherten Übungsaufgaben zurück
+- `getAssignment(int index)`: liefert die Übungsaufgabe `index` zurück
+- `getScore()`: liefert den Mittelwert der erreichten Prozentwerte aller Übungsaufgaben zurück
+- `isSufficient()`: liefert wieder ein "Bestanden" Kennzeichen, das bei einem Durchschnitt von mehr als 50% der Prozentwerte auf `true` gesetzt wird
+- `getGrade()`: liefert eine Note zurück: 1 bei >= 95% der Punkte, 2 bei >= 80% der Punkte, 3 bei >= 65% der Punkte, 4 bei >= 50% der Punkte, 5 bei > 0% der Punkte, 6 sonst.
+
+Schreiben Sie die neue Klasse `Exam` und legen Sie diese ebenfalls im Ordner
+`src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`ExamTest`) durchlaufen. Achtung: die Tests werden nur durchlaufen, wenn auch Ihre Aufgabe 18 korrekt ist.
+
+Hier noch ein Code Beispiel:
+
+[source,java]
+----
+
+var exam = new Exam(); // Leere Prüfung
+
+var size1 = exam.getSize(); // 0
+var score1 = exam.getScore(); // 100
+var sufficient1 = exam.isSufficient(); // true
+var grade1 = exam.getGrade(); // 1
+
+var assignment = new Assignment(1, 5); // Erzeugt neue Übungsaufgabe, siehe Aufgabe 18
+
+exam.addAssignment(assignment); // Fügt erste Übungsaufgabe hinzu
+
+var size2 = exam.getSize(); // 1
+var score2 = exam.getScore(); // 0
+var sufficient2 = exam.isSufficient(); // false
+var grade2 = exam.getGrade(); // 6
+
+assignment.solve(0); // löst ersten Test
+
+var size3 = exam.getSize(); // bleibt bei 1
+var score3 = exam.getScore(); // 20%
+var sufficient3 = exam.isSufficient(); // false
+var grade3 = exam.getGrade(); // 5
+
+exam.addAssignment(new Assignment(2, 10)); // Fügt zweite Übungsaufgabe hinzu
+
+exam.getAssignment(1).solve(0); // Löst ersten Test der zweiten Übungsaufgabe
+exam.getAssignment(1).solve(7); // Löst achten Test der zweiten Übungsaufgabe
+
+var size4 = exam.getSize(); // 2
+var score4 = exam.getScore(); // 20%
+var sufficient4 = exam.isSufficient(); // false
+var grade4 = exam.getGrade(); // 5
+
+----
