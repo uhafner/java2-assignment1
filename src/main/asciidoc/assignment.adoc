@@ -43,7 +43,7 @@ Im folgenden Code Schnipsel finden Sie ein Bedienungsbeispiel dieser Klasse:
 ----
 var assignment = new Assignment(18, 5); // Aufgabe 18 mit 5 Testfällen
 var number = assignment.getNumber(); // 18
-var tests = assignment.getTests(); // 18
+var tests = assignment.getTests(); // 5
 var green1 = assignment.getGreen(); // 0
 var red1 = assignment.getRed(); // 5
 var percentage1 = assignment.getPercentage(); // 0
