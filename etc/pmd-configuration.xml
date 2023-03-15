@@ -14,10 +14,11 @@
     <exclude name="GuardLogStatement"/>
     <exclude name="AccessorMethodGeneration"/>
     <exclude name="JUnit5TestShouldBePackagePrivate"/>
+    <exclude name="JUnit4TestShouldUseTestAnnotation"/>
     <exclude name="UnusedPrivateMethod"/>
   </rule>
   <rule ref="category/java/codestyle.xml">
-    <exclude name="DuplicateImports"/>
+    <exclude name="EmptyControlStatement"/>
     <exclude name="AtLeastOneConstructor"/>
     <exclude name="UnnecessaryConstructor"/>
     <exclude name="FieldDeclarationsShouldBeAtStartOfClass"/>
@@ -75,7 +76,6 @@
 
   <rule ref="category/java/errorprone.xml">
     <exclude name="DataflowAnomalyAnalysis"/>
-    <exclude name="BeanMembersShouldSerialize"/>
     <exclude name="AvoidDuplicateLiterals"/>
     <exclude name="TestClassWithoutTestCases"/>
     <exclude name="EmptyCatchBlock"/>

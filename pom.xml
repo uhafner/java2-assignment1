@@ -11,15 +11,13 @@
     <version>3.7.0</version>
   </parent>
 
-  <artifactId>assignment-5</artifactId>
-  <version>2022-W-SNAPSHOT</version>
+  <artifactId>java2-assignment-1</artifactId>
+  <version>2023-S-SNAPSHOT</version>
 
   <packaging>jar</packaging>
 
-  <name>KaraLight assignments</name>
-  <description>Provides a framework to compile and test KaraLight programs.
-    It also integrates Maven and several static analysis tools.
-  </description>
+  <name>Softwareentwicklung 2 Assignments</name>
+  <description>Alle Übungsblätter der Vorlesung Softwareentwicklung 2 von Prof. Dr. Ullrich Hafner.</description>
 
   <licenses>
     <license>
@@ -45,7 +43,7 @@
     <source.encoding>UTF-8</source.encoding>
     <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
 
-    <module.name>${project.groupId}.karalight.assignment</module.name>
+    <module.name>${project.groupId}.java2.assignment1</module.name>
 
     <karalight.version>0.7.3</karalight.version>
 
@@ -63,15 +61,6 @@
     <maven.compiler.target>17</maven.compiler.target>
 
   </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>de.i8k</groupId>
-      <artifactId>karalight</artifactId>
-      <version>${karalight.version}</version>
-    </dependency>
-
-  </dependencies>
 
   <build>
 

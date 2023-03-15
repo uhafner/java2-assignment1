@@ -1,4 +1,4 @@
-= Übungsblatt 5 - Softwareentwicklung I
+= Übungsblatt 1 - Softwareentwicklung II
 :icons: font
 Prof. Dr. Ullrich Hafner <ullrich.hafner@hm.edu>
 :toc-title: Inhaltsverzeichnis
@@ -27,11 +27,17 @@ endif::[]
 [TIP]
 ====
 
-Die Abgabe dieses Übungsblattes ist möglich bis zum 20.1. 18:00. Laden Sie Ihre Lösung im https://classroom.github.com/a/OAFPfB1v[GitHub Classroom Assignment 5] Projekt auf den eigenen `main` Branch hoch.
+Die Abgabe dieses Übungsblattes ist möglich bis zum 1.4. 18:00. Laden Sie Ihre Lösung im GitHub Classroom https://classroom.github.com/a/OAFPfB1v[Assignment 1] auf den eigenen `main` Branch hoch.
 
 ====
 
-== 18. Modellierung einer Übungsaufgabe
+== 0. Wiederholung - Objektorientierung
+
+In Softwareentwicklung 1 im letzten Semester haben wir die ersten Schritte in der Objektorientierung gemacht. Zur Wiederholung können Sie die 5. Übungsaufgabe aus dem letzten Semester noch einmal angehen.
+
+Für die nachfolgende Aufgabe 1 benötigen Sie jedenfalls eine Lösung für die Klassen `Assignment` und `Exam`. Wenn Sie diese Aufgabe 0 überspringen wollen, können Sie entweder Ihre Lösung aus dem letzten Semester oder meine Musterlösung aus Moodle in die beiden leeren Klassen kopieren.
+
+== 0.1 Modellierung einer Übungsaufgabe: `Assignment`
 
 In dieser Aufgabe soll die Bewertung unsere bisherigen echten Übungsblätter in einem Java Programm modelliert werden. Dazu braucht es eine Klasse `Assignment`, die einer einzelnen Übungsaufgabe eines Übungsblattes entspricht. Wie im "echten Leben" hat eine Übungsaufgabe eine feste Nummer (`number`) und eine feste Anzahl von mir geschriebener Tests (`tests`), die die Korrektheit der Lösung überprüft. Die hier vorliegende Aufgabe hat beispielsweise die Nummer 18, es gibt darin 5 von mir geschriebene Tests.
 
@@ -78,7 +84,7 @@ var sufficient4 = assignment.isSufficient(); // true
 
 Schreiben Sie zur Lösung der Aufgabe eine neue Klasse `Assignment` und legen Sie diese im Ordner `src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`AssignmentTest`) durchlaufen.
 
-== 19. Modellierung einer Prüfung
+== 0.2 Modellierung einer Prüfung: `Exam`
 
 Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assignment` aus Aufgabe 18) zusammen. Zu Beginn wird eine Prüfung leer angelegt und dann Schritt für Schritt weitere Übungsaufgaben hinzugefügt. Dazu soll eine Methode `addAssignment(Assignment assignment)` geschrieben werden, die einer `Exam` Instanz eine weitere Übungsaufgabe hinzufügt. Eine Prüfung lässt sich somit als ein Array von `Assignment` Instanzen betrachten, der Zugriff darauf erfolgt allerdings immer nur über die  `Exam` Instanz. D.h. das Array ist nach außen nicht sichtbar, es ist gekapselt. Nutzer der Klasse `Exam` sehen neben `addAssignment(Assignment assignment)` nur die folgenden Methoden:
 
@@ -130,3 +136,8 @@ var sufficient4 = exam.isSufficient(); // false
 var grade4 = exam.getGrade(); // 5
 
 ----
+
+== 1. Unit Testing mit JUnit und AssertJ
+
+Schreiben Sie Ihre ersten Modultests mit JUnit und AssertJ für die beiden Klassen `Assignment` und `Exam` aus Aufgabe 0. Versuchen Sie, möglichst viele verschiedenartige Szenarien als Tests umzusetzen. Ziel sollte sein, die Korrektheit jeder Methode (inkl. Konstruktor) mindestens in einem Testfall zu überprüfen. Beachten Sie abschließend, ob alle von mir in den Quelltext-Schnipseln vorgegebenen Beispiele auch in Ihren Tests abgedeckt sind.
+

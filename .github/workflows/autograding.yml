@@ -3,30 +3,23 @@ name: 'Build and autograde'
 on:
   push:
     branches:
-      - main
+      - '*'
   pull_request:
 
 jobs:
   Build:
-    name: 'Build Log'
     runs-on: self-hosted
     steps:
-      - name: Checkout assignment
-        uses: actions/checkout@v3.1.0
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-          check-latest: false
-          cache: 'maven'
+      - uses: actions/checkout@v3
       - name: Set up Maven
         uses: stCarolas/setup-maven@v4.4
         with:
           maven-version: 3.8.6
-      - name: Build assignment and run tests
-        run: mvn -V -ntp clean verify -Dmaven.test.failure.ignore=true | tee maven.log
-      - name: Autograde assignment (tests and analysis)
+      - name: Compile, Test and Analysis
+        run: JAVA_HOME=/home/hafner/jdk-17.0.5+8 mvn -V --color always -ntp clean verify -Dmaven.test.failure.ignore=true | tee maven.log
+      - name: Mutation Coverage
+        run: JAVA_HOME=/home/hafner/jdk-17.0.5+8 mvn -V --color always -ntp org.pitest:pitest-maven:mutationCoverage
+      - name: Autograding
         uses: uhafner/autograding-github-action@v1.7.0
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,10 +30,6 @@ jobs:
                 "tools": [
                   {
                     "id": "error-prone",
-                    "pattern": "**/*.log"
-                  },
-                  {
-                    "id": "java",
                     "pattern": "**/*.log"
                   },
                   {
@@ -60,17 +49,29 @@ jobs:
                     "pattern": "**/spotbugsXml.xml"
                   }
                 ],
-                "fileFilter": "Assignment[0-9][0-9].java",
-                "typesIgnorePattern": "HideUtilityClassConstructorCheck|UseUtilityClass|UseVarargs",
-                "maxScore": 20,
+                "typesIgnorePattern": "Varifier|YodaCondition",
+                "maxScore": 100,
                 "errorImpact": -5,
-                "highImpact": -3,
-                "normalImpact": -2,
+                "highImpact": -2,
+                "normalImpact": -1,
                 "lowImpact": -1
               },
               "tests": {
-                "maxScore": 30,
-                "failureImpact": -10,
-                "skippedImpact": -10
+                "maxScore": 100,
+                "passedImpact": 0,
+                "failureImpact": -5,
+                "skippedImpact": -1
+              },
+              "coverage": {
+                "maxScore": 100,
+                "coveredPercentageImpact": 0,
+                "missedPercentageImpact": -1
+              },
+              "pit": {
+                "maxScore": 100,
+                "detectedImpact": 0,
+                "undetectedImpact": -1,
+                "detectedPercentageImpact": 0,
+                "undetectedPercentageImpact": 0
               }
             }
