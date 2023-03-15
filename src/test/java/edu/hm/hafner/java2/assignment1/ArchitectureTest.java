@@ -1,4 +1,4 @@
-package edu.hm.hafner.kara;
+package edu.hm.hafner.java2.assignment1;
 
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
@@ -14,7 +14,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.*;
  * @author Ullrich Hafner
  */
 @SuppressWarnings("hideutilityclassconstructor")
-@AnalyzeClasses(packages = "edu.hm.hafner.kara")
+@AnalyzeClasses(packages = "edu.hm.hafner.java2")
 class ArchitectureTest {
     /** Prevents collections classes from being used. */
     @ArchTest
