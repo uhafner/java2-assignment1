@@ -1,4 +1,4 @@
-= Softwareentwicklung I - Prof. Dr. Ullrich Hafner
+= Softwareentwicklung 2 - Prof. Dr. Ullrich Hafner
 :icons: font
 Prof. Dr. Ullrich Hafner <ullrich.hafner@hm.edu>
 :toc-title: Inhaltsverzeichnis
@@ -22,39 +22,11 @@ ifdef::env-github,env-browser[:relfilesuffix: .adoc]
 
 Die aktuelle Aufgabenstellung befindet sich in link:src/main/asciidoc/assignment.adoc[einer eigenen Datei] innerhalb dieses Projekts. Das Format für die Aufgabenstellung ist https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] (ebenso wie diese README Datei).
 
-== KaraLight
-
-Für die ersten Aufgabenblätter nutzen wir KaraLight. KaraLight ist eine Variante von https://www.swisseduc.ch/informatik/karatojava/[JavaKara], die der Kollege Bastian Katz in Java Swing umgesetzt hat. Dadurch erhalten wir einen einfachen Einstieg in die Programmierung mit Java. Der Marienkäfer Kara wird direkt in Java programmiert. Die Welt von JavaKara ist identisch mit der Welt von Kara. Man sieht also sofort, was die Programme machen.
-
 === Öffnen der Projekte
 
-Zum Editieren und Starten Ihrer Programme müssen Sie immer ein von mir vorgefertigtes Projekt in der Entwicklungsumgebung IntelliJ öffnen. Dazu gibt es zwei Varianten:
+Zum Editieren und Starten Ihrer Programme müssen Sie immer ein von mir vorgefertigtes Projekt in der Entwicklungsumgebung IntelliJ öffnen: Laden Sie dazu das Projekt direkt in IntelliJ mit *File->New->Project From Version Control*. Geben Sie in der *URL* die URL Ihres GitHub Repositories an (nicht der Classroom, sondern das für Sie erzeugte Projekt) und starten Sie den Import mit *Clone*. Bei der Frage nach der Authentifizierung geben Sie *Token* an, und vergeben mit dem automatisch vordefinierten Dialog in GitHub ein entsprechendes Token. Denken Sie daran, als Laufzeit für das Token das Semesterende anzugeben.
 
-- Manuelles Entpacken: Dazu laden Sie das Projekt der jeweiligen Aufgabenstellung zunächst aus dem GitHub Classroom mit *Code->Download ZIP* in der GitHub Oberfläche herunter. Entpacken Sie dieses Projekt auf Ihrer Festplatte. Öffnen Sie das Projekt dann in IntelliJ mit *File->Open*.
-- Automatischer Import über den Classroom: Laden Sie das Projekt direkt in IntelliJ mit *File->New->Project From Version Control*. Geben Sie in der *URL* die URL Ihres GitHub Repositories an (nicht der Classroom, sondern das für Sie erzeugte Projekt) und starten Sie den Import mit *Clone*. Bei der Frage nach der Authentifizierung geben Sie *Token* an, und vergeben mit dem automatisch vordefinierten Dialog in GitHub ein entsprechendes Token. Denken Sie daran, als Laufzeit für das Token das Semesterende anzugeben.
-
-Wenn Sie das Projekt in IntelliJ geöffnet haben, finden Sie im Hauptordner dieses README. Die Aufgabenstellung zu jeder Abgabe befindet sich im Ordner `src/main/asciidoc/assignment.adoc`. Eine Abgabe besteht i.A. aus mehreren Aufgaben. Jede Aufgabe müssen Sie in einer eigenen Datei (d.h. Java Klasse) lösen. Diese Klassen sind fortlaufend nummeriert und beginnen mit `Assignment01`. Die Dateien habe ich schon für Sie angelegt, sodass Sie direkt starten können.
-
-=== Lösen und Starten der Aufgaben
-
-Technische gesehen, muss jede Aufgabe für KaraLight in einer eigenen Klasse gelöst werden, z.B. `Assignment01` (befindet sich in der Datei `Assignment01.java`). Diese Klasse hat bereits einen von mir vorgegebnen Rumpf, d.h. Sie können direkt mit Ihrer Lösung in der vordefinierten `main` Methode starten. Diese `main`  Methode muss immer bestehen bleiben, sie ist der jeweilige Ausgangspunkt für KaraLight. Diese Methode können Sie in der Entwicklungsumgebung starten, indem Sie den grünen *Run* Button drücken.
-
-In dieser `main` Methode wird direkt in Java programmiert, zusätzlich können Sie die folgenden Befehle verwenden, um Kara zu steuern:
-
-- `move()` -- Kara bewegt sich einen Schritt nach vorn. Das geht nur, wenn vor Kara kein Baum ist! Wenn vor Kara ein Pilz ist, schiebt Kara den Pilz eine Position weiter. (Das setzt wiederum voraus, dass der Platz vor dem Pilz frei ist.)
-- `turnRight()` bzw. `turnLeft()` -- Kara dreht sich nach rechts bzw. links.
-- `pickLeaf()` -- Kara nimmt ein Blatt auf. Das geht nur, wenn eins da ist!
-- `putLeaf()` -- Kara legt ein Blatt ab. Das geht nur, wenn keins da ist!
-- `say(...)` -- Kara gibt einen Text in einem Fenster aus.
-- `askNumber(...)` -- Kara fragt nach einer Zahl, die den Ablauf des Programms variabel gestaltet.
-
-Zusätzlich stehen Ihnen die folgenden Abfragen zur Verfügung:
-
-- `isMushroomInFront()` - liefert true, wenn vor Kara ein Pilz steht
-- `isTreeInFront()` - liefert true, wenn vor Kara ein Baum steht
-- `isTreeLeft()` - liefert true, wenn links von Kara ein Baum steht
-- `isTreeRight()` - liefert true, wenn rechts von Kara ein Baum steht
-- `isOnLeaf()` - liefert true, wenn Kara auf einem Blatt steht
+Wenn Sie das Projekt in IntelliJ geöffnet haben, finden Sie im Hauptordner dieses README. Die Aufgabenstellung zu jeder Abgabe befindet sich im Ordner `src/main/asciidoc/assignment.adoc`. Eine Abgabe besteht i.A. aus mehreren Aufgaben. Jede Aufgabe müssen Sie in einer eigenen Datei (d.h. Java Klasse) lösen.
 
 == Entwicklungsrichtlinien
 
