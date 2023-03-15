@@ -26,7 +26,7 @@ Die aktuelle Aufgabenstellung befindet sich in link:src/main/asciidoc/assignment
 
 Zum Editieren und Starten Ihrer Programme müssen Sie immer ein von mir vorgefertigtes Projekt in der Entwicklungsumgebung IntelliJ öffnen: Laden Sie dazu das Projekt direkt in IntelliJ mit *File->New->Project From Version Control*. Geben Sie in der *URL* die URL Ihres GitHub Repositories an (nicht der Classroom, sondern das für Sie erzeugte Projekt) und starten Sie den Import mit *Clone*. Bei der Frage nach der Authentifizierung geben Sie *Token* an, und vergeben mit dem automatisch vordefinierten Dialog in GitHub ein entsprechendes Token. Denken Sie daran, als Laufzeit für das Token das Semesterende anzugeben.
 
-Wenn Sie das Projekt in IntelliJ geöffnet haben, finden Sie im Hauptordner dieses README. Die Aufgabenstellung zu jeder Abgabe befindet sich im Ordner `src/main/asciidoc/assignment.adoc`. Eine Abgabe besteht i.A. aus mehreren Aufgaben. Jede Aufgabe müssen Sie in einer eigenen Datei (d.h. Java Klasse) lösen.
+Wenn Sie das Projekt in IntelliJ geöffnet haben, finden Sie im Hauptordner dieses README. Die Aufgabenstellung zu jeder Abgabe befindet sich im Ordner `src/main/asciidoc/assignment.adoc`. Eine Abgabe besteht i.A. aus mehreren Teilaufgaben. Je nach Aufgabenstellung müssen Sie Klassen, Testfälle oder beides erstellen und hochladen.
 
 == Entwicklungsrichtlinien
 
