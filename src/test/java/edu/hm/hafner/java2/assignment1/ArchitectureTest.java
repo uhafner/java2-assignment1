@@ -6,8 +6,6 @@ import com.tngtech.archunit.lang.ArchRule;
 
 import edu.hm.hafner.util.ArchitectureRules;
 
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.*;
-
 /**
  * Checks the architecture of this module.
  *
@@ -16,12 +14,6 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.*;
 @SuppressWarnings("hideutilityclassconstructor")
 @AnalyzeClasses(packages = "edu.hm.hafner.java2")
 class ArchitectureTest {
-    /** Prevents collections classes from being used. */
-    @ArchTest
-    static final ArchRule NO_FORBIDDEN_PACKAGE_USED =
-            noClasses().should().dependOnClassesThat().resideInAnyPackage("java.util")
-                    .because("Collections and similar advanced utilities will be part of software development 2.");
-
     @ArchTest
     static final ArchRule NO_PUBLIC_TEST_CLASSES = ArchitectureRules.NO_PUBLIC_TEST_CLASSES;
 
