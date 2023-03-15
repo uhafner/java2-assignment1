@@ -1,4 +1,4 @@
-= Übungsblatt 1 - Softwareentwicklung II
+= Übungsblatt 1 - Softwareentwicklung 2
 :icons: font
 Prof. Dr. Ullrich Hafner <ullrich.hafner@hm.edu>
 :toc-title: Inhaltsverzeichnis
@@ -27,7 +27,7 @@ endif::[]
 [TIP]
 ====
 
-Die Abgabe dieses Übungsblattes ist möglich bis zum 1.4. 18:00. Laden Sie Ihre Lösung im GitHub Classroom https://classroom.github.com/a/OAFPfB1v[Assignment 1] auf den eigenen `main` Branch hoch.
+Die Abgabe dieses Übungsblattes ist möglich bis zum 1.4. 18:00. Laden Sie Ihre Lösung im GitHub Classroom https://classroom.github.com/a/cyNQ162C[Assignment 1] auf den eigenen `main` Branch hoch.
 
 ====
 
@@ -141,3 +141,4 @@ var grade4 = exam.getGrade(); // 5
 
 Schreiben Sie Ihre ersten Modultests mit JUnit und AssertJ für die beiden Klassen `Assignment` und `Exam` aus Aufgabe 0. Versuchen Sie, möglichst viele verschiedenartige Szenarien als Tests umzusetzen. Ziel sollte sein, die Korrektheit jeder Methode (inkl. Konstruktor) mindestens in einem Testfall zu überprüfen. Beachten Sie abschließend, ob alle von mir in den Quelltext-Schnipseln vorgegebenen Beispiele auch in Ihren Tests abgedeckt sind.
 
+Zum einfachen Start habe ich Ihnen bereits leere Klassen und leere Tests ins Projekt kopiert, diese können Sie einfach überschreiben bzw. verändern.
