@@ -45,8 +45,6 @@
 
     <module.name>${project.groupId}.java2.assignment1</module.name>
 
-    <karalight.version>0.7.3</karalight.version>
-
     <!-- Maven Plug-ins Configuration -->
     <asciidoctor.maven.plugin.version>2.2.2</asciidoctor.maven.plugin.version>
     <asciidoctorj.version>2.5.7</asciidoctorj.version>
