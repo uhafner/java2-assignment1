@@ -52,7 +52,7 @@ Da wir werden Ihre Abgaben auch automatisiert bewerten, können Sie optional noc
 Laden Sie aktuelle Version von Java 17 von https://adoptium.net/de/[Adoptium] herunter (Achtung: keine neueren oder älteren Versionen nutzen) und https://javatutorial.net/set-java-home-windows-10[setzen Sie den Pfad], falls das nicht automatisch funktioniert hat.
 
 Optional: Maven können Sie als
-https://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.zip[ZIP] herunterladen und an einem Pfad Ihrer Wahl entpacken. Dann müssen Sie auch hier noch den https://mkyong.com/maven/how-to-install-maven-in-windows/[Pfad setzen].
+https://ftp-stud.hs-esslingen.de/pub/Mirrors/ftp.apache.org/dist/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.zip[ZIP] herunterladen und an einem Pfad Ihrer Wahl entpacken. Dann müssen Sie auch hier noch den https://mkyong.com/maven/how-to-install-maven-in-windows/[Pfad setzen].
 
 === macOS
 
