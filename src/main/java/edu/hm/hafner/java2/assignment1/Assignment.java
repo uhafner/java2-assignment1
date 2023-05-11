@@ -4,15 +4,22 @@ package edu.hm.hafner.java2.assignment1;
  * Representation of an assignment.
  */
 public class Assignment {
-
     private final int number;
-    private final int numberTestCases;
-    private boolean[] testCases;
+    private final boolean[] testCases;
+    private final int tests; // redundant as implicitly given by array length
 
-    public Assignment(final int number, final int numberTestCases) {
+    /**
+     * Creates a new instance of {@link Assignment}.
+     *
+     * @param number
+     *         the number of this assignment
+     * @param tests
+     *         the number of test cases
+     */
+    public Assignment(final int number, final int tests) {
         this.number = number;
-        this.numberTestCases = numberTestCases;
-        this.testCases = new boolean[numberTestCases];
+        this.testCases = new boolean[tests];
+        this.tests = tests;
     }
 
     public int getNumber() {
@@ -20,22 +27,22 @@ public class Assignment {
     }
 
     public int getTests() {
-        return numberTestCases;
+        return tests;
     }
 
     /**
-     * Get number of green tests.
+     * Returns the number of green tests.
      *
-     * @return number of solved tests.
+     * @return the number of solved tests.
      */
     public int getGreen() {
-        int count = 0;
-        for (boolean test : testCases) {
-            if (test) {
-                count++;
+        int solvedAmount = 0;
+        for (boolean isTestGreen : testCases) {
+            if (isTestGreen) {
+                solvedAmount++;
             }
         }
-        return count;
+        return solvedAmount;
     }
 
     /**
@@ -44,13 +51,7 @@ public class Assignment {
      * @return number of unsolved tests
      */
     public int getRed() {
-        int count = 0;
-        for (boolean test : testCases) {
-            if (!test) {
-                count++;
-            }
-        }
-        return count;
+        return tests - getGreen();
     }
 
     /**
@@ -59,17 +60,16 @@ public class Assignment {
      * @return percantage of solved tests
      */
     public int getPercentage() {
-        if (getRed() == 0) {
-            return 100;
-        }
-        float percentage = (float) getGreen() / getTests() * 100;
-        return (int) percentage;
+        int solvedAmount = getGreen();
+
+        return 100 * solvedAmount / getTests();
     }
 
     /**
      * Solves a test with the given index.
      *
-     * @param index index of test to solve
+     * @param index
+     *         index of test to solve
      */
     public void solve(final int index) {
         if (index >= 0 && index < testCases.length) {
@@ -78,7 +78,7 @@ public class Assignment {
     }
 
     /**
-     * Returns if percentage of solved tests is greater than 50 percent.
+     * Returns whether the percentage of solved tests is greater or equal than 50 percent.
      *
      * @return if percentage is sufficient
      */

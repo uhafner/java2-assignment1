@@ -19,7 +19,7 @@ class AssignmentTest {
         assertThat(assignment.getGreen()).isEqualTo(0);
         assertThat(assignment.getRed()).isEqualTo(5);
         assertThat(assignment.getPercentage()).isEqualTo(0);
-        assertThat(assignment.isSufficient()).isEqualTo(false);
+        assertThat(assignment.isSufficient()).isFalse();
     }
 
     @Test
@@ -31,18 +31,26 @@ class AssignmentTest {
         assertThat(assignment.getGreen()).isEqualTo(1);
         assertThat(assignment.getRed()).isEqualTo(9);
         assertThat(assignment.getPercentage()).isEqualTo(10);
-        assertThat(assignment.isSufficient()).isEqualTo(false);
+        assertThat(assignment.isSufficient()).isFalse();
     }
 
     @Test
     void shouldFixAllTests() {
-        var assignment = new Assignment(1, 1);
+        var assignment = new Assignment(1, 2);
+
         assignment.solve(0);
 
         assertThat(assignment.getGreen()).isEqualTo(1);
+        assertThat(assignment.getRed()).isEqualTo(1);
+        assertThat(assignment.getPercentage()).isEqualTo(50);
+        assertThat(assignment.isSufficient()).isTrue();
+
+        assignment.solve(1);
+
+        assertThat(assignment.getGreen()).isEqualTo(2);
         assertThat(assignment.getRed()).isEqualTo(0);
         assertThat(assignment.getPercentage()).isEqualTo(100);
-        assertThat(assignment.isSufficient()).isEqualTo(true);
+        assertThat(assignment.isSufficient()).isTrue();
     }
 
     @Test

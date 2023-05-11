@@ -1,40 +1,46 @@
 package edu.hm.hafner.java2.assignment1;
 
+import java.util.Arrays;
+
 /**
  * An exam contains several assignments.
  */
 public class Exam {
-    private Assignment[] assignments = new Assignment[]{};
+    private static final int LIMIT_ONE = 95;
+    private static final int LIMIT_TWO = 80;
+    private static final int LIMIT_THREE = 65;
+    private static final int LIMIT_FOUR = 50;
+    private static final int LIMIT_FIVE = 0;
+
+    private Assignment[] assignments = new Assignment[LIMIT_FIVE];
 
     /**
-     * Get number of assignments.
+     * Returns the number of assignments.
      *
-     * @return length of assignments array
+     * @return the number of assignments
      */
     public int getSize() {
         return assignments.length;
     }
 
     /**
-     * Adds an assignment to the exam.
+     * Adds an assignment to this exam.
      *
-     * @param assignment assignment to add
+     * @param assignment
+     *         the assignment to add
      */
     public void addAssignment(final Assignment assignment) {
-        int currentLenght = assignments.length;
-        Assignment[] newArray = new Assignment[currentLenght + 1];
-        for (int i = 0; i < currentLenght; i++) {
-            newArray[i] = assignments[i];
-        }
-        newArray[currentLenght] = assignment;
-        assignments = newArray;
+        assignments = Arrays.copyOf(assignments, assignments.length + 1);
+        assignments[assignments.length - 1] = assignment;
     }
 
     /**
-     * Get assignment at the given index.
+     * Returns the assignment at the given index.
      *
-     * @param index index of assignment
-     * @return assignment at given index
+     * @param index
+     *         index of the assignment
+     *
+     * @return assignment at the given index
      */
     public Assignment getAssignment(final int index) {
         return assignments[index];
@@ -46,44 +52,48 @@ public class Exam {
      * @return score between 0 and 100
      */
     public int getScore() {
-        if (assignments.length < 1) {
+        var size = getSize();
+        if (size == LIMIT_FIVE) {
             return 100;
         }
-        int percentageSum = 0;
-        for (Assignment assignment: assignments) {
+
+        int percentageSum = LIMIT_FIVE;
+        for (Assignment assignment : assignments) {
             percentageSum += assignment.getPercentage();
         }
-        return percentageSum / assignments.length;
+        return percentageSum / size;
     }
 
     /**
-     * Returns if score of exam is greaten than 50 percent.
+     * Returns whether the score of this exam is greater or equal than 50 percent.
      *
      * @return if score is sufficient
      */
     public boolean isSufficient() {
-        return getScore() >= 50;
+        return getScore() >= LIMIT_FOUR;
     }
 
     /**
-     * Get grade for exam between 1 and 6.
+     * Returns the grade for this exam between 1 and 6.
      *
      * @return grade for exam
      */
     public int getGrade() {
-        if (getScore() >= 95) {
+        if (getScore() >= LIMIT_ONE) {
             return 1;
-        } else if (getScore() >= 80) {
-            return 2;
-        } else if (getScore() >= 65) {
-            return 3;
-        } else if (getScore() >= 50) {
-            return 4;
-        } else if (getScore() > 0) {
-            return 5;
-        } else {
-            return 6;
         }
+        if (getScore() >= LIMIT_TWO) {
+            return 2;
+        }
+        if (getScore() >= LIMIT_THREE) {
+            return 3;
+        }
+        if (getScore() >= LIMIT_FOUR) {
+            return 4;
+        }
+        if (getScore() > LIMIT_FIVE) {
+            return 5;
+        }
+        return 6;
     }
-
 }
