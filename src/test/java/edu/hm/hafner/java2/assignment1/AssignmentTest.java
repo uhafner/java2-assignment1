@@ -25,6 +25,7 @@ class AssignmentTest {
     @Test
     void shouldFixOneTest() {
         var assignment = new Assignment(1, 10);
+
         assignment.solve(1);
 
         assertThat(assignment.getTests()).isEqualTo(10);
@@ -56,18 +57,23 @@ class AssignmentTest {
     @Test
     void shouldNotSolveTests() {
         var assignment = new Assignment(1, 3);
-        assignment.solve(-1);
-        assignment.solve(3);
 
-        assertThat(assignment.getGreen()).isEqualTo(0);
-        assertThat(assignment.getRed()).isEqualTo(3);
-        assertThat(assignment.getPercentage()).isEqualTo(0);
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> assignment.solve(-1));
+        assertThatExceptionOfType(IndexOutOfBoundsException.class)
+                .isThrownBy(() -> assignment.solve(3));
     }
 
     @Test
     void shouldNotSolveSameTestTwice() {
         var assignment = new Assignment(1, 3);
+
         assignment.solve(0);
+
+        assertThat(assignment.getGreen()).isEqualTo(1);
+        assertThat(assignment.getRed()).isEqualTo(2);
+        assertThat(assignment.getPercentage()).isEqualTo(33);
+
         assignment.solve(0);
 
         assertThat(assignment.getGreen()).isEqualTo(1);

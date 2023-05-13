@@ -12,7 +12,7 @@ public class Exam {
     private static final int LIMIT_FOUR = 50;
     private static final int LIMIT_FIVE = 0;
 
-    private Assignment[] assignments = new Assignment[LIMIT_FIVE];
+    private Assignment[] assignments = new Assignment[0];
 
     /**
      * Returns the number of assignments.
@@ -53,11 +53,11 @@ public class Exam {
      */
     public int getScore() {
         var size = getSize();
-        if (size == LIMIT_FIVE) {
-            return 100;
+        if (size == 0) {
+            return 100; // Oder 0 oder Exception
         }
 
-        int percentageSum = LIMIT_FIVE;
+        int percentageSum = 0;
         for (Assignment assignment : assignments) {
             percentageSum += assignment.getPercentage();
         }

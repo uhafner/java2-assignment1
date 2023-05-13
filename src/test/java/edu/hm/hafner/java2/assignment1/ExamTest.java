@@ -1,5 +1,6 @@
 package edu.hm.hafner.java2.assignment1;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,16 +19,18 @@ class ExamTest {
         assertThat(exam.getScore()).isEqualTo(100);
         assertThat(exam.isSufficient()).isTrue();
         assertThat(exam.getGrade()).isEqualTo(1);
-
     }
 
-    @Test
+    @Test @DisplayName("Ein Examen mit genau einer Aufgabe sollte erstellt werden können.")
     void shouldCreateExamWithOneAssignment() {
         var exam = new Exam();
+
         var assignment = new Assignment(1, 5);
         exam.addAssignment(assignment);
 
         assertThat(exam.getSize()).isEqualTo(1);
+        assertThat(exam.getAssignment(0)).isSameAs(assignment);
+
         assertThat(exam.getScore()).isEqualTo(0);
         assertThat(exam.isSufficient()).isFalse();
         assertThat(exam.getGrade()).isEqualTo(6);
@@ -36,10 +39,17 @@ class ExamTest {
     @Test
     void shouldCreateExamWithTwoAssignments() {
         var exam = new Exam();
-        var assignment = new Assignment(1, 5);
+
+        var firstAssignment = new Assignment(1, 5);
+        exam.addAssignment(firstAssignment);
+
         var secondAssignment = new Assignment(2, 3);
-        exam.addAssignment(assignment);
         exam.addAssignment(secondAssignment);
+
+        assertThat(exam.getAssignment(0))
+                .isSameAs(firstAssignment);
+        assertThat(exam.getAssignment(1))
+                .isSameAs(secondAssignment);
 
         assertThat(exam.getSize()).isEqualTo(2);
         assertThat(exam.getScore()).isEqualTo(0);
@@ -50,9 +60,11 @@ class ExamTest {
     @Test
     void shouldCreateExamWithOneAssignmentAndSolveOneTest() {
         var exam = new Exam();
+
         var assignment = new Assignment(1, 5);
-        assignment.solve(0);
         exam.addAssignment(assignment);
+
+        assignment.solve(0);
 
         assertThat(exam.getSize()).isEqualTo(1);
         assertThat(exam.getScore()).isEqualTo(20);
@@ -65,10 +77,12 @@ class ExamTest {
         var exam = new Exam();
 
         var assignment = new Assignment(1, 2);
+
         assignment.solve(0);
         assignment.solve(1);
 
         var secondAssignment = new Assignment(2, 2);
+
         exam.addAssignment(assignment);
         exam.addAssignment(secondAssignment);
 

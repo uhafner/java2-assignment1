@@ -57,7 +57,7 @@ public class Assignment {
     /**
      * Get percentage of solved tests.
      *
-     * @return percantage of solved tests
+     * @return percentage of solved tests
      */
     public int getPercentage() {
         int solvedAmount = getGreen();
@@ -70,11 +70,15 @@ public class Assignment {
      *
      * @param index
      *         index of test to solve
+     * @throws IndexOutOfBoundsException if the index is out of bounds
      */
-    public void solve(final int index) {
-        if (index >= 0 && index < testCases.length) {
-            testCases[index] = true;
+    public void solve(final int index)
+            throws IndexOutOfBoundsException {
+        if (index < 0 || index >= testCases.length) {
+            throw new IndexOutOfBoundsException(
+                    "Index out of bounds: " + index);
         }
+        testCases[index] = true;
     }
 
     /**
