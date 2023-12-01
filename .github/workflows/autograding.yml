@@ -1,7 +1,9 @@
 name: 'Autograding'
 
 on:
-  pull_request:
+  push:
+    branches:
+      - '*'
 
 jobs:
   build:
