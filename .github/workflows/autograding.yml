@@ -32,7 +32,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
-          checks-name: ':mortar_board: Quality Checks'
+          checks-name: 'Quality Checks'
           config: >
             {
               "tests": {
