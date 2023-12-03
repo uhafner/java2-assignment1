@@ -36,7 +36,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
-          checks-name: 'Quality Checks'
+          checks-name: ':mortar_board: Quality Checks'
           config: >
             {
               "tests": {
@@ -53,38 +53,51 @@ jobs:
                 "failureImpact": -5,
                 "maxScore": 100
               },
-              "analysis": {
-                "name": "Warnings",
-                "id": "warnings",
-                "tools": [
-                  {
-                    "id": "checkstyle",
-                    "name": "CheckStyle",
-                    "pattern": "**/target/checkstyle-result.xml"
-                  },
-                  {
-                    "id": "pmd",
-                    "name": "PMD",
-                    "pattern": "**/target/pmd.xml"
-                  },
-                  {
-                    "id": "error-prone",
-                    "name": "Error Prone",
-                    "pattern": "**/maven.log"
-                  },
-                  {
-                    "id": "spotbugs",
-                    "name": "SpotBugs",
-                    "pattern": "**/target/spotbugsXml.xml"
-                  }
-
-                ],
-                "errorImpact": -1,
-                "highImpact": -1,
-                "normalImpact": -1,
-                "lowImpact": -1,
-                "maxScore": 100
-              },
+              "analysis": [
+                {
+                  "name": "Style",
+                  "id": "style",
+                  "tools": [
+                    {
+                      "id": "checkstyle",
+                      "name": "Checkstyle",
+                      "pattern": "**/target/checkstyle-result.xml"
+                    },
+                    {
+                      "id": "pmd",
+                      "name": "PMD",
+                      "pattern": "**/target/pmd.xml"
+                    },
+                    {
+                      "id": "error-prone",
+                      "name": "Error Prone",
+                      "pattern": "**/maven.log"
+                    }
+                  ],
+                  "errorImpact": -1,
+                  "highImpact": -1,
+                  "normalImpact": -1,
+                  "lowImpact": -1,
+                  "maxScore": 100
+                },
+                {
+                  "name": "Bugs",
+                  "id": "bugs",
+                  "icon": "bug",
+                  "tools": [
+                    {
+                      "id": "spotbugs",
+                      "name": "SpotBugs",
+                      "pattern": "**/target/spotbugsXml.xml"
+                    }
+                  ],
+                  "errorImpact": -2,
+                  "highImpact": -2,
+                  "normalImpact": -2,
+                  "lowImpact": -2,
+                  "maxScore": 100
+                }
+              ],
               "coverage": [
                 {
                   "tools": [
