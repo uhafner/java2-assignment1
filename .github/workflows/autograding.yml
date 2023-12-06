@@ -24,6 +24,8 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.9.5
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
       - name: Build with Maven
         run: mvn -V --color always -ntp clean verify -Ppit | tee maven.log
       - name: Extract pull request number
