@@ -24,13 +24,15 @@ jobs:
         uses: stCarolas/setup-maven@v4.5
         with:
           maven-version: 3.9.5
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
       - name: Build with Maven
         run: mvn -V --color always -ntp clean verify -Ppit | tee maven.log
       - name: Extract pull request number
         uses: jwalton/gh-find-current-pr@v1
         id: pr
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@v3
+        uses: uhafner/autograding-github-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
@@ -41,11 +43,11 @@ jobs:
                 "tools": [
                   {
                     "id": "test",
-                    "name": "Unittests",
+                    "name": "Unit Tests",
                     "pattern": "**/target/*-reports/TEST*.xml"
                   }
                 ],
-                "name": "JUnit",
+                "name": "Tests",
                 "passedImpact": 0,
                 "skippedImpact": -1,
                 "failureImpact": -5,
@@ -58,7 +60,7 @@ jobs:
                   "tools": [
                     {
                       "id": "checkstyle",
-                      "name": "Checkstyle",
+                      "name": "CheckStyle",
                       "pattern": "**/target/checkstyle-result.xml"
                     },
                     {
@@ -115,7 +117,7 @@ jobs:
                       "pattern": "**/target/site/jacoco/jacoco.xml"
                     }
                   ],
-                  "name": "JaCoCo",
+                  "name": "Code Coverage", 
                   "maxScore": 100,
                   "missedPercentageImpact": -1
                 },
@@ -129,7 +131,7 @@ jobs:
                       "pattern": "**/target/pit-reports/mutations.xml"
                     }
                   ],
-                  "name": "PIT",
+                  "name": "Mutation Coverage",
                   "maxScore": 100,
                   "missedPercentageImpact": -1
                 }
