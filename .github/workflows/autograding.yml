@@ -23,12 +23,12 @@ jobs:
         with:
           maven-version: 3.9.5
       - name: Build with Maven
-        run: mvn -V --color always -ntp clean verify --file pom.xml '-Djenkins.test.timeout=5000' '-Dgpg.skip' -Ppit | tee maven.log
+        run: mvn -V --color always -ntp clean verify --file pom.xml -Ppit | tee maven.log
       - name: Extract pull request number
         uses: jwalton/gh-find-current-pr@v1
         id: pr
       - name: Run Autograding
-        uses: uhafner/autograding-github-action@main
+        uses: uhafner/autograding-github-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ steps.pr.outputs.number }}
