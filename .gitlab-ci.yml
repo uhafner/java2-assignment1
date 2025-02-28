@@ -27,7 +27,7 @@ maven-verify:
     paths:
       - target
   script:
-    - mvn -V --color always -ntp -fae verify -Pci
+    - mvn -V --color always -ntp -fae verify -Pci | tee maven.log
 
 autograding:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3
@@ -51,9 +51,7 @@ autograding:
               "pattern": "**/target/*-reports/TEST*.xml"
             }
           ],
-          "passedImpact": 0,
-          "skippedImpact": -1,
-          "failureImpact": -5,
+          "failureRateImpact": -1,
           "maxScore": 100
         },
         "analysis": [
@@ -64,12 +62,12 @@ autograding:
               {
                 "id": "checkstyle",
                 "name": "CheckStyle",
-                "pattern": "**/target/**checkstyle-result.xml"
+                "pattern": "**/target/checkstyle-*/checkstyle-result.xml"
               },
               {
                 "id": "pmd",
                 "name": "PMD",
-                "pattern": "**/target/**pmd.xml"
+                "pattern": "**/target/pmd-*/pmd.xml"
               }
             ],
             "errorImpact": -1,
@@ -88,6 +86,10 @@ autograding:
                 "name": "SpotBugs",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/**spotbugsXml.xml"
+              },
+              {
+                "id": "error-prone",
+                "pattern": "**/maven.log"
               }
             ],
             "errorImpact": -3,
@@ -103,14 +105,12 @@ autograding:
             "tools": [
               {
                 "id": "jacoco",
-                "name": "Line Coverage",
                 "metric": "line",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/site/jacoco/jacoco.xml"
               },
               {
                 "id": "jacoco",
-                "name": "Branch Coverage",
                 "metric": "branch",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/site/jacoco/jacoco.xml"
