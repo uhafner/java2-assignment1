@@ -9,7 +9,7 @@ stages:
   - test
   - grade
 
-build:
+maven-compile:
   stage: build
   artifacts:
     when: always
@@ -18,7 +18,7 @@ build:
   script:
     - mvn -V --color always -ntp -fae test-compile -Pci
 
-test:
+maven-verify:
   stage: test
   needs:
     - build
