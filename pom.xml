@@ -8,11 +8,11 @@
   <parent>
     <artifactId>codingstyle-pom</artifactId>
     <groupId>edu.hm.hafner</groupId>
-    <version>3.39.0</version>
+    <version>5.12.0</version>
   </parent>
 
   <artifactId>java2-assignment1</artifactId>
-  <version>2023-S-SNAPSHOT</version>
+  <version>2025-S-SNAPSHOT</version>
 
   <packaging>jar</packaging>
 
@@ -28,18 +28,19 @@
 
   <developers>
     <developer>
-      <name>Ullrich Hafner</name>
       <id>uhafner</id>
+      <name>Ullrich Hafner</name>
       <email>ullrich.hafner@hm.edu</email>
+      <url>https://cs.hm.edu/~hafner</url>
       <organization>Munich University of Applied Sciences</organization>
       <organizationUrl>https://www.hm.edu/en/index.en.html</organizationUrl>
     </developer>
   </developers>
 
-  <url>http://www.cs.hm.edu/die_fakultaet/ansprechpartner/professoren/hafner/index.de.html</url>
+  <url>https://cs.hm.edu/~hafner</url>
 
   <properties>
-    <java.version>17</java.version>
+    <java.version>21</java.version>
     <source.encoding>UTF-8</source.encoding>
     <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
 
@@ -61,7 +62,6 @@
   </properties>
 
   <build>
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -146,35 +146,6 @@
         </executions>
       </plugin>
     </plugins>
-
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.pitest</groupId>
-          <artifactId>pitest-maven</artifactId>
-          <version>${maven-pitest-plugin.version}</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.pitest</groupId>
-              <artifactId>pitest-junit5-plugin</artifactId>
-              <version>${pitest-junit5-plugin.version}</version>
-            </dependency>
-          </dependencies>
-          <configuration>
-            <failWhenNoMutations>false</failWhenNoMutations>
-            <outputFormats>XML,HTML</outputFormats>
-            <excludedTestClasses>
-              <param>*ITest</param>
-            </excludedTestClasses>
-            <excludedMethods>
-              <param>*equals</param>
-              <param>*hashCode</param>
-              <param>*toString</param>
-            </excludedMethods>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
   </build>
 
 </project>
