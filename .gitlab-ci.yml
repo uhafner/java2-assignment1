@@ -105,6 +105,7 @@ autograding:
             "tools": [
               {
                 "id": "jacoco",
+                "name": "line",
                 "metric": "line",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/site/jacoco/jacoco.xml"
@@ -112,6 +113,7 @@ autograding:
               {
                 "id": "jacoco",
                 "metric": "branch",
+                "name": "branch",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/site/jacoco/jacoco.xml"
               }
