@@ -8,6 +8,14 @@
         "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 <module name="Checker">
   <property name="severity" value="warning"/>
+  <module name="RegexpMultiline">
+    <property name="format" value="\{\s*(\n|\r\n)\s*(\n|\r\n)"/>
+    <property name="message" value="No empty lines after opening curly braces allowed" />
+  </module>
+  <module name="RegexpMultiline">
+    <property name="format" value="(\n|\r\n)\s*(\n|\r\n)\s*\}"/>
+    <property name="message" value="No empty lines before closing curly braces allowed" />
+  </module>
   <module name="TreeWalker">
     <module name="SuppressWarningsHolder" />
 
@@ -74,7 +82,9 @@
       <property name="max" value="10"/>
     </module>
     <module name="MethodLength"/>
-    <module name="ParameterNumber"/>
+    <module name="ParameterNumber">
+      <property name="ignoreOverriddenMethods" value="true"/>
+    </module>
     <module name="EmptyForIteratorPad"/>
     <module name="EmptyLineSeparator">
       <property name="allowMultipleEmptyLines" value="false"/>

@@ -2,32 +2,36 @@
 <!-- ${project.groupId}:${project.artifactId}:${project.version} -->
 <FindBugsFilter>
   <Match>
-      <Class name="~.*_jmh.*" />
+    <Class name="~.*_jmh.*" />
   </Match>
   <Match>
-      <Bug code="NM" />
-      <Class name="~.*Assertions.*" />
+    <Bug code="NM" />
+    <Class name="~.*Assertions.*" />
   </Match>
   <Match>
-      <Bug code="CD" />
-      <Class name="~.*" />
+    <Bug code="CD" />
+    <Class name="~.*" />
   </Match>
   <Match>
-      <Class name="~.*Messages" />
+    <Class name="~.*Messages" />
   </Match>
   <Match>
-      <Class name="~.*Assert" />
+    <Class name="~.*Test.*" />
+    <Bug pattern="URF_UNREAD_FIELD, UUF_UNUSED_FIELD, DMI_HARDCODED_ABSOLUTE_FILENAME" />
   </Match>
   <Match>
-      <Bug code="UwF, SIC, NP, Dm, UI, RV, DMI, EI, THROWS" />
-      <Class name="~.*(Test|Benchmark).*" />
+    <Class name="~.*Assert" />
+  </Match>
+  <Match>
+    <Bug code="UuF, UwF, SIC, NP, Dm, UI, DMI, EI, THROWS" />
+    <Class name="~.*(Test|Benchmark).*" />
   </Match>
   <Match>
     <Bug category="SECURITY"/>
     <Class name="~.*(Test|Benchmark).*" />
   </Match>
   <Match>
-    <Bug pattern="DESERIALIZATION_GADGET, FORMAT_STRING_MANIPULATION, PATH_TRAVERSAL_IN, WEAK_FILENAMEUTILS, RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE, EI_EXPOSE_REP, EI_EXPOSE_REP2"/>
+    <Bug pattern="DESERIALIZATION_GADGET, FORMAT_STRING_MANIPULATION, PATH_TRAVERSAL_IN, WEAK_FILENAMEUTILS, RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE, EI_EXPOSE_REP, EI_EXPOSE_REP2, CT_CONSTRUCTOR_THROW"/>
   </Match>
   <Match>
     <Bug code="THROWS"/>
