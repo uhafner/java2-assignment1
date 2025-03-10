@@ -14,6 +14,6 @@ class ExamTest {
     void shouldCreateEmptyExam() {
         var exam = new Exam();
 
-        assertThat(exam).isSameAs(exam);
+        assertThat(exam).isSameAs(exam); // This is a fake test that needs to be replaced
     }
 }

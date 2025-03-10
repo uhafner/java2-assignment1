@@ -15,6 +15,9 @@ import edu.hm.hafner.util.ArchitectureRules;
 @AnalyzeClasses(packages = "edu.hm.hafner.java2")
 class ArchitectureTest {
     @ArchTest
+    static final ArchRule NO_FIELDS_IN_TESTS = ArchitectureRules.NO_FIELDS_IN_TESTS;
+
+    @ArchTest
     static final ArchRule NO_PUBLIC_TEST_CLASSES = ArchitectureRules.NO_PUBLIC_TEST_CLASSES;
 
     @ArchTest
@@ -37,4 +40,7 @@ class ArchitectureTest {
 
     @ArchTest
     static final ArchRule NO_EXCEPTIONS_WITH_NO_ARG_CONSTRUCTOR = ArchitectureRules.NO_EXCEPTIONS_WITH_NO_ARG_CONSTRUCTOR;
+
+    @ArchTest
+    static final ArchRule READ_RESOLVE_SHOULD_BE_PROTECTED = ArchitectureRules.READ_RESOLVE_SHOULD_BE_PROTECTED;
 }

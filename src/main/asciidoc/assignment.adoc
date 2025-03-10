@@ -27,15 +27,15 @@ endif::[]
 [TIP]
 ====
 
-Die Abgabe dieses Übungsblattes ist möglich bis zum 6.4. 18:00. Laden Sie Ihre Lösung im GitHub Classroom https://classroom.github.com/a/cyNQ162C[Assignment 1] auf den eigenen `main` Branch hoch.
+Die Abgabe dieses Übungsblattes ist möglich bis zum 4.4. 18:00. Laden Sie Ihre Lösung in Ihrem GitLab Projekt auf den eigenen `main` Branch hoch.
 
 ====
 
-== 0. Wiederholung - Objektorientierung
+== 1. Wiederholung - Objektorientierung
 
-In Softwareentwicklung 1 im letzten Semester haben wir die ersten Schritte in der Objektorientierung gemacht. Zur Wiederholung können Sie die 5. Übungsaufgabe aus dem letzten Semester noch einmal angehen.
+In Softwareentwicklung 1 im letzten Semester haben Sie die ersten Schritte in der Objektorientierung gemacht. Zur Wiederholung und zum Kennenlernen meiner Entwicklungsumgebung können Sie die folgende Übungsaufgabe angehen.
 
-Für die nachfolgende Aufgabe 1 benötigen Sie jedenfalls eine Lösung für die Klassen `Assignment` und `Exam`. Wenn Sie diese Aufgabe 0 überspringen wollen, können Sie entweder Ihre Lösung aus dem letzten Semester oder meine Musterlösung aus Moodle in die beiden leeren Klassen kopieren.
+Für die nachfolgende Aufgabe 2 benötigen Sie eine Lösung für die Klassen `Assignment` und `Exam`. Wenn Sie diese Aufgabe 0 überspringen wollen, können Sie entweder Ihre Lösung aus dem letzten Semester oder meine Musterlösung aus Moodle in die beiden leeren Klassen kopieren.
 
 == 0.1 Modellierung einer Übungsaufgabe: `Assignment`
 

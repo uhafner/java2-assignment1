@@ -14,6 +14,6 @@ class AssignmentTest {
     void shouldCreateEmptyAssignment() {
         var assignment = new Assignment();
 
-        assertThat(assignment).isSameAs(assignment);
+        assertThat(assignment).isSameAs(assignment); // This is a fake test that needs to be replaced
     }
 }
