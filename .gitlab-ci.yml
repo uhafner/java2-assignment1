@@ -26,6 +26,7 @@ maven-verify:
     when: always
     paths:
       - target
+      - maven.log
   script:
     - mvn -V --color always -ntp -fae verify -Pci -Dasciidoctor.skip | tee maven.log
 
