@@ -16,7 +16,7 @@ maven-compile:
     paths:
       - target
   script:
-    - mvn -V --color always -ntp -fae test-compile -Pci
+    - mvn -V --color always -ntp -fae test-compile -Pci -Dasciidoctor.skip
 
 maven-verify:
   stage: test
@@ -27,10 +27,10 @@ maven-verify:
     paths:
       - target
   script:
-    - mvn -V --color always -ntp -fae verify -Pci | tee maven.log
+    - mvn -V --color always -ntp -fae verify -Pci -Dasciidoctor.skip | tee maven.log
 
 autograding:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3.0.0-rc1-SNAPSHOT
   stage: grade
   needs:
     - maven-verify
