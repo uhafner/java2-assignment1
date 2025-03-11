@@ -31,7 +31,7 @@ maven-verify:
     - mvn -V --color always -ntp -fae verify -Pci -Dasciidoctor.skip | tee maven.log
 
 autograding:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3.0.0-rc3-SNAPSHOT
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3
   stage: grade
   needs:
     - maven-verify
@@ -44,11 +44,11 @@ autograding:
     CONFIG: |
       {
         "tests": {
-          "name": "Tests",
+          "name": "Modultests",
           "tools": [
             {
               "id": "junit",
-              "name": "Tests",
+              "name": "Modultests",
               "pattern": "**/target/*-reports/TEST*.xml"
             }
           ],
@@ -57,17 +57,15 @@ autograding:
         },
         "analysis": [
           {
-            "name": "Style",
+            "name": "Verletzungen der Richtlinien",
             "id": "style",
             "tools": [
               {
                 "id": "checkstyle",
-                "name": "CheckStyle",
                 "pattern": "**/target/checkstyle-*/checkstyle-result.xml"
               },
               {
                 "id": "pmd",
-                "name": "PMD",
                 "pattern": "**/target/pmd-*/pmd.xml"
               }
             ],
@@ -78,13 +76,12 @@ autograding:
             "maxScore": 100
           },
           {
-            "name": "Bugs",
+            "name": "Potentielle Fehler",
             "id": "bugs",
             "icon": "bug",
             "tools": [
               {
                 "id": "spotbugs",
-                "name": "SpotBugs",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/**spotbugsXml.xml"
               },
@@ -102,19 +99,19 @@ autograding:
         ],
         "coverage": [
           {
-            "name": "Code Coverage",
+            "name": "Testüberdeckung",
             "tools": [
               {
                 "id": "jacoco",
-                "name": "line",
                 "metric": "line",
+                "name": "Zeilenüberdeckung",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/site/jacoco/jacoco.xml"
               },
               {
                 "id": "jacoco",
                 "metric": "branch",
-                "name": "branch",
+                "name": "Zweigüberdeckung",
                 "sourcePath": "src/main/java",
                 "pattern": "**/target/site/jacoco/jacoco.xml"
               }
