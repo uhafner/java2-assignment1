@@ -58,6 +58,7 @@ autograding:
           },
           {
             "name": "Verletzung der Architekturrichtlinien",
+            "icon": "no_entry_sign",
             "tools": [
               {
                 "id": "junit",
