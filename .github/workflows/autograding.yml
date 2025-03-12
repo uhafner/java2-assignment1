@@ -35,32 +35,32 @@ jobs:
           checks-name: 'Quality Checks'
           config: >
             {
-             "tests": [
-               {
-                 "name": "Modultests",
-                 "tools": [
-                   {
-                     "id": "junit",
-                     "name": "Modultests",
-                     "pattern": "**/target/*-reports/TEST-edu.hm.hafner.java2.assignment*.xml"
-                   }
-                 ],
-                 "failureRateImpact": -1,
-                 "maxScore": 100
-               },
-               {
-                 "name": "Verletzung der Architekturrichtlinien",
-                 "icon": "no_entry_sign",
-                 "tools": [
-                   {
-                     "id": "junit",
-                     "icon": "no_entry_sign",
-                     "name": "Architekturrichtlinien",
-                     "pattern": "**/target/surefire-reports/TEST-edu.hm.hafner.java2.ArchitectureTest.xml"
-                   }
-                 ],
-                 "failureRateImpact": -1,
-                 "maxScore": 100
-               }
-             ]
-          }
+              "tests": [
+                {
+                  "name": "Modultests",
+                  "tools": [
+                    {
+                      "id": "junit",
+                      "name": "Modultests",
+                      "pattern": "**/target/*-reports/TEST-edu.hm.hafner.java2.assignment*.xml"
+                    }
+                  ],
+                  "failureRateImpact": -1,
+                  "maxScore": 100
+                },
+                {
+                  "name": "Verletzung der Architekturrichtlinien",
+                  "icon": "no_entry_sign",
+                  "tools": [
+                    {
+                      "id": "junit",
+                      "icon": "no_entry_sign",
+                      "name": "Architekturrichtlinien",
+                      "pattern": "**/target/surefire-reports/TEST-edu.hm.hafner.java2.ArchitectureTest.xml"
+                    }
+                  ],
+                  "failureRateImpact": -1,
+                  "maxScore": 100
+                }
+              ]
+            }
