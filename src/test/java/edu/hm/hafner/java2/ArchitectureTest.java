@@ -1,4 +1,4 @@
-package edu.hm.hafner.java2.assignment1;
+package edu.hm.hafner.java2;
 
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;

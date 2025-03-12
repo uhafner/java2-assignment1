@@ -43,18 +43,33 @@ autograding:
     MAX_COVERAGE_COMMENTS: 10
     CONFIG: |
       {
-        "tests": {
-          "name": "Modultests",
-          "tools": [
-            {
-              "id": "junit",
-              "name": "Modultests",
-              "pattern": "**/target/*-reports/TEST*.xml"
-            }
-          ],
-          "failureRateImpact": -1,
-          "maxScore": 100
-        },
+        "tests": [
+          {
+            "name": "Modultests",
+            "tools": [
+              {
+                "id": "junit",
+                "name": "Modultests",
+                "pattern": "**/target/*-reports/TEST-edu.hm.hafner.java2.assignment*.xml"
+              }
+            ],
+            "failureRateImpact": -1,
+            "maxScore": 100
+          },
+          {
+            "name": "Verletzung der Architekturrichtlinien",
+            "tools": [
+              {
+                "id": "junit",
+                "icon": "no_entry_sign"
+                "name": "Architekturrichtlinien",
+                "pattern": "**/target/surefire-reports/TEST-edu.hm.hafner.java2.ArchitectureTest.xml"
+              }
+            ],
+            "failureRateImpact": -1,
+            "maxScore": 100
+          }
+        ],
         "analysis": [
           {
             "name": "Verletzungen der Richtlinien",
