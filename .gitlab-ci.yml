@@ -61,7 +61,7 @@ autograding:
             "tools": [
               {
                 "id": "junit",
-                "icon": "no_entry_sign"
+                "icon": "no_entry_sign",
                 "name": "Architekturrichtlinien",
                 "pattern": "**/target/surefire-reports/TEST-edu.hm.hafner.java2.ArchitectureTest.xml"
               }
