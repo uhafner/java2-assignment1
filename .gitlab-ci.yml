@@ -31,7 +31,7 @@ maven-verify:
     - mvn -V --color always -ntp -fae verify -Pci -Dasciidoctor.skip | tee maven.log
 
 autograding:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3.1.0
   stage: grade
   needs:
     - maven-verify
