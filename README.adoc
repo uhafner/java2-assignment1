@@ -18,10 +18,14 @@ ifdef::env-github,env-browser[:relfilesuffix: .adoc]
 :figure-caption: Abbildung
 :table-caption: Tabelle
 
+== Rahmenbedingungen
+
+Beachten Sie die Rahmenbedingungen für alle Abgaben in Moodle.
+
 == Aktuelle Aufgabenstellung
 
 Die aktuelle Aufgabenstellung befindet sich in link:src/main/asciidoc/assignment.adoc[einer eigenen Datei] innerhalb dieses Projekts.
-Das Format für die Aufgabenstellung ist https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] (ebenso wie diese README Datei).
+Das Format für die Aufgabenstellung ist https://docs.asciidoctor.org/asciidoc/latest/[AsciiDoc] (ebenso wie diese `README` Datei).
 
 === Öffnen der Projekte
 
@@ -32,7 +36,7 @@ Bei der Frage nach der Authentifizierung geben Sie *Token* an, und vergeben mit 
 Denken Sie daran, als Laufzeit für das Token mindestens das Semesterende anzugeben.
 
 Wenn Sie das Projekt in IntelliJ geöffnet haben, finden Sie im Hauptordner dieses `README`.
-Die Aufgabenstellung zu jeder Abgabe befindet sich im Ordner `src/main/asciidoc/assignment.adoc`.
+Die Aufgabenstellung zu jeder Abgabe befindet sich in der Datei `src/main/asciidoc/assignment.adoc`.
 Eine Abgabe besteht i.A. aus mehreren Teilaufgaben.
 Je nach Aufgabenstellung müssen Sie Klassen, Testfälle oder beides erstellen und hochladen.
 
