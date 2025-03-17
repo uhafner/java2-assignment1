@@ -27,21 +27,31 @@ endif::[]
 [TIP]
 ====
 
-Die Abgabe dieses Übungsblattes ist möglich bis zum 4.4. 18:00. Laden Sie Ihre Lösung in Ihrem GitLab Projekt auf den eigenen `main` Branch hoch.
+Die Abgabe dieses Übungsblattes ist möglich bis zum 30.4. 18:00.
+Laden Sie Ihre Lösung in Ihrem GitLab Projekt auf den eigenen `solution` Branch hoch.
 
 ====
 
 == 1. Wiederholung - Objektorientierung
 
-In Softwareentwicklung 1 im letzten Semester haben Sie die ersten Schritte in der Objektorientierung gemacht. Zur Wiederholung und zum Kennenlernen meiner Entwicklungsumgebung können Sie die folgende Übungsaufgabe angehen.
+In Softwareentwicklung 1 im letzten Semester haben Sie die ersten Schritte in der Objektorientierung und im Testen gemacht.
+Zur Wiederholung und zum Kennenlernen meiner Entwicklungsumgebung können Sie die folgende Übungsaufgabe angehen.
 
-Für die nachfolgende Aufgabe 2 benötigen Sie eine Lösung für die Klassen `Assignment` und `Exam`. Wenn Sie diese Aufgabe 0 überspringen wollen, können Sie entweder Ihre Lösung aus dem letzten Semester oder meine Musterlösung aus Moodle in die beiden leeren Klassen kopieren.
+== 1.1 Modellierung einer Übungsaufgabe: `Assignment`
 
-== 0.1 Modellierung einer Übungsaufgabe: `Assignment`
+In dieser Aufgabe soll die Bewertung eines Übungsblatts in einem Java Programm modelliert werden.
+Dazu braucht es eine Klasse `Assignment`, die einer einzelnen Übungsaufgabe eines Übungsblattes entspricht.
+Wie im "echten Leben" hat eine Übungsaufgabe eine feste Nummer (`number`) und eine feste Anzahl von mir geschriebener Tests (`tests`), die die Korrektheit der Lösung überprüft.
+Die hier vorliegende Aufgabe hat beispielsweise die Nummer 1, es gibt darin z.B. 5 von mir geschriebene Tests.
 
-In dieser Aufgabe soll die Bewertung unsere bisherigen echten Übungsblätter in einem Java Programm modelliert werden. Dazu braucht es eine Klasse `Assignment`, die einer einzelnen Übungsaufgabe eines Übungsblattes entspricht. Wie im "echten Leben" hat eine Übungsaufgabe eine feste Nummer (`number`) und eine feste Anzahl von mir geschriebener Tests (`tests`), die die Korrektheit der Lösung überprüft. Die hier vorliegende Aufgabe hat beispielsweise die Nummer 18, es gibt darin 5 von mir geschriebene Tests.
-
-Neben diesen beiden Eigenschaften `number` und `tests` soll eine Instanz dieser Klasse `Assignment` den Fortschritt der Bearbeitung überwachen. Zunächst liegt die Anzahl der erfolgreichen, d.h. grünen Tests (`green`), bei `0`. D.h. alle Tests schlagen fehl und damit ist die Anzahl der fehlgeschlagenen, d.h. roten Tests (`red`) gleich mit der Gesamtzahl aller vorhandenen Tests. Wird nun eine Aufgabe bearbeitet und einer der fehlgeschlagenen Tests behoben, dann wird dies durch den Aufruf der Methode `solve(int test)` umgesetzt. Der Parameter `test` entspricht der Nummer des behobenen Testfalls. Nach Aufruf dieser Methode erhöht sich die Anzahl der behobenen Tests, die Anzahl der fehlschlagenden Tests erniedrigt sich (natürlich nur, wenn der Test nicht schon vor dem Aufruf behoben war). Neben den Eigenschaften `green` und `red` soll die Klasse zusätzlich noch die Funktionalität bieten, der erreichten Prozentsatz als Integerzahl im Bereich 0-100 zurückzuliefern. Zudem gibt es ein "Bestanden" Kennzeichen, das bei 50% aller behobenen Tests auf `true` gesetzt wird
+Neben diesen beiden Eigenschaften `number` und `tests` soll eine Instanz dieser Klasse `Assignment` den Fortschritt der Bearbeitung überwachen.
+Zunächst liegt die Anzahl der erfolgreichen, d.h. grünen Tests (`green`), bei `0`.
+D.h. alle Tests schlagen fehl und damit ist die Anzahl der fehlgeschlagenen, d.h. roten Tests (`red`) gleich mit der Gesamtzahl aller vorhandenen Tests.
+Wird nun eine Aufgabe bearbeitet und einer der fehlgeschlagenen Tests behoben, dann wird dies durch den Aufruf der Methode `solve(int test)` umgesetzt.
+Der Parameter `test` entspricht der Nummer des behobenen Testfalls.
+Nach Aufruf dieser Methode erhöht sich die Anzahl der behobenen Tests, die Anzahl der fehlschlagenden Tests erniedrigt sich (natürlich nur, wenn der Test nicht schon vor dem Aufruf behoben war).
+Neben den Eigenschaften `green` und `red` soll die Klasse zusätzlich noch die Funktionalität bieten, der erreichten Prozentsatz als Integerzahl im Bereich 0-100 zurückzuliefern.
+Zudem gibt es ein "Bestanden" Kennzeichen, das bei 50 % aller behobenen Tests auf `true` gesetzt wird
 
 Im folgenden Code Schnipsel finden Sie ein Bedienungsbeispiel dieser Klasse:
 
@@ -82,11 +92,16 @@ var sufficient4 = assignment.isSufficient(); // true
 
 ----
 
-Schreiben Sie zur Lösung der Aufgabe eine neue Klasse `Assignment` und legen Sie diese im Ordner `src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`AssignmentTest`) durchlaufen.
+Schreiben Sie die Lösung dieser Aufgabe in die Klasse `Assignment`, diese liegt bereits -- noch leer -- im Ordner `src/main/java/edu/hm/hafner/assignment1`.
 
-== 0.2 Modellierung einer Prüfung: `Exam`
+== 1.2 Modellierung einer Prüfung: `Exam`
 
-Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assignment` aus Aufgabe 18) zusammen. Zu Beginn wird eine Prüfung leer angelegt und dann Schritt für Schritt weitere Übungsaufgaben hinzugefügt. Dazu soll eine Methode `addAssignment(Assignment assignment)` geschrieben werden, die einer `Exam` Instanz eine weitere Übungsaufgabe hinzufügt. Eine Prüfung lässt sich somit als ein Array von `Assignment` Instanzen betrachten, der Zugriff darauf erfolgt allerdings immer nur über die  `Exam` Instanz. D.h. das Array ist nach außen nicht sichtbar, es ist gekapselt. Nutzer der Klasse `Exam` sehen neben `addAssignment(Assignment assignment)` nur die folgenden Methoden:
+Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assignment` aus Aufgabe 1.1) zusammen.
+Zu Beginn wird eine Prüfung leer angelegt und dann Schritt für Schritt weitere Übungsaufgaben hinzugefügt.
+Dazu soll eine Methode `addAssignment(Assignment assignment)` geschrieben werden, die einer `Exam` Instanz eine weitere Übungsaufgabe hinzufügt.
+Eine Prüfung lässt sich somit als eine Liste oder ein Array von `Assignment` Instanzen betrachten, der Zugriff darauf erfolgt allerdings immer nur über die  `Exam` Instanz.
+D.h. das Array ist nach außen nicht sichtbar, es ist gekapselt.
+Nutzer der Klasse `Exam` sehen neben `addAssignment(Assignment assignment)` nur die folgenden Methoden:
 
 - `getSize()`: liefert die Anzahl der gespeicherten Übungsaufgaben zurück
 - `getAssignment(int index)`: liefert die Übungsaufgabe `index` zurück
@@ -94,10 +109,9 @@ Eine Prüfung (`Exam`) setzt sich aus mehreren einzelnen Übungsaufgaben (`Assig
 - `isSufficient()`: liefert wieder ein "Bestanden" Kennzeichen, das bei einem Durchschnitt von mehr als 50% der Prozentwerte auf `true` gesetzt wird
 - `getGrade()`: liefert eine Note zurück: 1 bei >= 95% der Punkte, 2 bei >= 80% der Punkte, 3 bei >= 65% der Punkte, 4 bei >= 50% der Punkte, 5 bei > 0% der Punkte, 6 sonst.
 
-Schreiben Sie die neue Klasse `Exam` und legen Sie diese ebenfalls im Ordner
-`src/main/java/edu/hm/hafner/kara` ab. Ergänzen Sie dann die oben beschriebene Funktionalität, bis alle Testfälle (`ExamTest`) durchlaufen. Achtung: die Tests werden nur durchlaufen, wenn auch Ihre Aufgabe 18 korrekt ist.
+Schreiben Sie die Lösung dieser Aufgabe in die ebenfalls bereits leer angelegte Klasse `Exam` im Ordner `src/main/java/edu/hm/hafner/kara`.
 
-Hier noch ein Code Beispiel:
+Hier noch ein Code Beispiel zum besseren Verständnis:
 
 [source,java]
 ----
@@ -109,7 +123,7 @@ var score1 = exam.getScore(); // 100
 var sufficient1 = exam.isSufficient(); // true
 var grade1 = exam.getGrade(); // 1
 
-var assignment = new Assignment(1, 5); // Erzeugt neue Übungsaufgabe, siehe Aufgabe 18
+var assignment = new Assignment(1, 5); // Erzeugt neue Übungsaufgabe, siehe Aufgabe 1.1
 
 exam.addAssignment(assignment); // Fügt erste Übungsaufgabe hinzu
 
@@ -137,8 +151,11 @@ var grade4 = exam.getGrade(); // 5
 
 ----
 
-== 1. Unit Testing mit JUnit und AssertJ
+== 2. Unit Testing mit JUnit und AssertJ
 
-Schreiben Sie Ihre ersten Modultests mit JUnit und AssertJ für die beiden Klassen `Assignment` und `Exam` aus Aufgabe 0. Versuchen Sie, möglichst viele verschiedenartige Szenarien als Tests umzusetzen. Ziel sollte sein, die Korrektheit jeder Methode (inkl. Konstruktor) mindestens in einem Testfall zu überprüfen. Beachten Sie abschließend, ob alle von mir in den Quelltext-Schnipseln vorgegebenen Beispiele auch in Ihren Tests abgedeckt sind.
+Schreiben Sie Modultests mit JUnit und AssertJ für die beiden Klassen `Assignment` und `Exam` aus Aufgabe 1.
+Versuchen Sie, möglichst viele verschiedenartige Szenarien als Tests umzusetzen.
+Ziel sollte sein, die Korrektheit jeder Methode (inkl. Konstruktor) mindestens in einem Testfall zu überprüfen.
+Beachten Sie abschließend, ob alle von mir in den Quelltext-Schnipseln vorgegebenen Beispiele auch in Ihren Tests abgedeckt sind.
 
 Zum einfachen Start habe ich Ihnen bereits leere Klassen und leere Tests ins Projekt kopiert, diese können Sie einfach überschreiben bzw. verändern.
