@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CheckStyle-IDEA" serialisationVersion="2">
-    <checkstyleVersion>10.3.2</checkstyleVersion>
+    <checkstyleVersion>10.21.3</checkstyleVersion>
     <scanScope>JavaOnlyWithTests</scanScope>
     <scanBeforeCheckin>true</scanBeforeCheckin>
     <option name="thirdPartyClasspath" />
@@ -12,7 +12,8 @@
       <list>
         <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
-        <ConfigurationLocation id="013e907d-a6c2-4c85-9798-133900bc8c89" type="LOCAL_FILE" scope="All" description="Ullrich Hafner's CheckStyle Configuration">$PROJECT_DIR$/etc/checkstyle-configuration.xml</ConfigurationLocation>
+        <ConfigurationLocation id="d72c3a00-8f8b-423b-9b88-a39364604475" type="LOCAL_FILE" scope="Production" description="Ullrich Hafner's Production Checks">$PROJECT_DIR$/etc/checkstyle-java-configuration.xml</ConfigurationLocation>
+        <ConfigurationLocation id="97b17e79-c933-4bb3-97ec-2af7fa8754f3" type="LOCAL_FILE" scope="All" description="Ullrich Hafner's Testing Checks">$PROJECT_DIR$/etc/checkstyle-tests-configuration.xml</ConfigurationLocation>
       </list>
     </option>
   </component>
