@@ -1,5 +1,9 @@
 workflow:
   name: CI
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 image:
   name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/maven:3.9.9-eclipse-temurin-21-alpine
@@ -31,7 +35,7 @@ maven-verify:
     - mvn -V --color always -ntp -fae verify -Pci -Dasciidoctor.skip | tee maven.log
 
 autograding:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3.1.0
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/uhafner/autograding-gitlab-action:v3.3.0
   stage: grade
   needs:
     - maven-verify
@@ -106,10 +110,10 @@ autograding:
                 "pattern": "**/maven.log"
               }
             ],
-            "errorImpact": -3,
-            "highImpact": -3,
-            "normalImpact": -3,
-            "lowImpact": -3,
+            "errorImpact": -5,
+            "highImpact": -5,
+            "normalImpact": -5,
+            "lowImpact": -5,
             "maxScore": 100
           }
         ],
