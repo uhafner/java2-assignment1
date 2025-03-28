@@ -27,8 +27,12 @@ endif::[]
 [TIP]
 ====
 
-Die Abgabe dieses Übungsblattes ist möglich bis zum 30.4. 18:00.
+Die Abgabe dieses Übungsblattes ist bis zum 30.3. 18:00 möglich.
 Laden Sie Ihre Lösung in Ihrem GitLab Projekt auf den eigenen `solution` Branch hoch.
+Ich habe für diesem Branch bereits einen Merge Request angelegt, den Sie für die Abgabe verwenden können.
+Verwenden Sie nicht den `main` Branch für Ihre Lösungen, dieser ist reserviert für die Vorlage.
+So können Sie (und wir als Lehrkraft bzw. Tutoren) Ihre Änderungen immer mit dem Startpunkt vergleichen.
+Details zu diesem Vorgehen lernen Sie im ersten Praktikum.
 
 ====
 
