@@ -47,7 +47,7 @@
     <module.name>${project.groupId}.java2.assignment1</module.name>
 
     <!-- Maven Plug-ins Configuration -->
-    <asciidoctor.maven.plugin.version>3.1.1</asciidoctor.maven.plugin.version>
+    <asciidoctor.maven.plugin.version>3.2.0</asciidoctor.maven.plugin.version>
     <asciidoctorj.version>3.0.0</asciidoctorj.version>
     <asciidoctorj.diagram.version>2.3.1</asciidoctorj.diagram.version>
     <asciidoctorj.pdf.version>2.3.19</asciidoctorj.pdf.version>
